@@ -8,11 +8,13 @@
 - Vue Router
 - Pinia
 - Axios
--
+- Autoprefixer
+- Postcss
+- Vite
 
 ## Getting started
 
-```
+```node
 - npm i
 -> npm run dev (for development)
 -> npm run build (for production)
