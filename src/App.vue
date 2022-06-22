@@ -1,14 +1,15 @@
 <template>
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <h1>test</h1>
+  <TheHeader />
+  <h1>testApp</h1>
+  <RouterView />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import TheHeader from "./components/TheHeader.vue";
 
 export default {
   components: {
-    HelloWorld,
+    TheHeader,
   },
 };
 </script>
