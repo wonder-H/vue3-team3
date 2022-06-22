@@ -1,5 +1,6 @@
 <template>
   <header>
+    <SearchInput />
     <div class="inner">
       <div>하나투어</div>
       <ul>
@@ -11,7 +12,10 @@
 </template>
 
 <script>
-export default {};
+import SearchInput from "./SearchInput.vue";
+export default {
+  components: { SearchInput },
+};
 </script>
 
 <style scoped lang="scss"></style>
