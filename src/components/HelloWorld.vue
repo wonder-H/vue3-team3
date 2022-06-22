@@ -1,37 +1,45 @@
-<script setup>
-import { ref } from "vue";
-
-defineProps({
-  msg: String,
-});
-
-const count = ref(0);
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Check Bootstrap
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <a
+      class="btn btn-secondary dropdown-toggle"
+      href="#"
+      role="button"
+      id="dropdownMenuLink"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Dropdown link
+    </a>
 
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank"> Vite Documentation </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
 </template>
 
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>
+<script>
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String,
+  },
+};
+</script>
