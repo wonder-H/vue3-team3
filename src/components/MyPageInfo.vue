@@ -1,5 +1,5 @@
 <template>
-  <div>공지/이벤트 버튼(?)</div>
+  <div>마이페이지 사용자 정보</div>
 </template>
 
 <script>

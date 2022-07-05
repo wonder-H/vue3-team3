@@ -1,21 +1,29 @@
 <template>
+  <!-- 헤더영역 = 로고 + 검색기능 + 회원아이콘  -->
   <header>
-    <SearchInput />
     <div class="inner">
-      <div>하나투어</div>
-      <ul>
-        <li>여수</li>
-      </ul>
+      <div class="logo">FASTOUR</div>
+      <Regions />
       <div>회원 아이콘</div>
     </div>
   </header>
 </template>
 
 <script>
-import SearchInput from "./SearchInput.vue";
+import Regions from "./Regions.vue";
 export default {
-  components: { SearchInput },
+  components: {
+    Regions,
+  },
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.inner {
+  display: flex;
+  justify-content: space-between;
+  .logo {
+    font-size: 20px;
+  }
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>아이템 있다 여기</div>
+  <div>Here is 메인</div>
 </template>
 
 <script>

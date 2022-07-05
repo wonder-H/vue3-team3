@@ -1,21 +1,12 @@
 <template>
-  <TheHeader />
-  <TheSection />
-  <TheFooter />
+  <router-link to="/admin">admin</router-link> |
+  <router-link to="/user">user</router-link>
   <RouterView />
 </template>
 
 <script>
-import TheHeader from "./components/TheHeader.vue";
-import TheFooter from "./components/TheFooter.vue";
-import TheSection from "./components/TheSection.vue";
-
 export default {
-  components: {
-    TheHeader,
-    TheSection,
-    TheFooter,
-  },
+  components: {},
 };
 </script>
 

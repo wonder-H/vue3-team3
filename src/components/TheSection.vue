@@ -1,6 +1,6 @@
 <template>
+  <!-- 섹션영역 = 배너 + 목록 + 안내 -->
   <section>
-    섹션영역 = 배너 + 목록 + 안내
     <MainBanner />
     <MainLists />
     <MainNotice />
@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import MainBanner from "./MainBanner.vue";
-import MainLists from "./MainLists.vue";
-import MainNotice from "./MainNotice.vue";
+import MainBanner from "./Main/MainBanner.vue";
+import MainLists from "./Main/MainLists.vue";
+import MainNotice from "./Main/MainNotice.vue";
 export default {
   components: { MainBanner, MainLists, MainNotice },
 };

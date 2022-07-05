@@ -1,5 +1,5 @@
 <template>
-  <div>Here is '/'</div>
+  <div>관리자 페이지_제품 추가</div>
 </template>
 
 <script>

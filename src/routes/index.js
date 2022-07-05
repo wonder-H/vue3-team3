@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "./Home.vue";
+import Main from "./Main.vue";
 import Product from "./Product.vue";
 import Notice from "./Notice.vue";
+import Admin from "./Admin.vue";
+import User from "./User.vue";
 
 export default createRouter({
   history: createWebHistory(),
@@ -9,15 +11,24 @@ export default createRouter({
   routes: [
     {
       path: "/",
-      component: Home,
+      component: Main,
     },
     {
-      path: "/products/:id",
-      component: Product,
+      path: "/admin",
+      component: Admin,
     },
     {
-      path: "/notice",
-      component: Notice,
+      path: "/user",
+      component: User,
     },
+
+    // {
+    //   path: "/products/:id",
+    //   component: Product,
+    // },
+    // {
+    //   path: "/notice",
+    //   component: Notice,
+    // },
   ],
 });
