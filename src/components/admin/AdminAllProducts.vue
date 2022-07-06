@@ -1,7 +1,59 @@
 <template>
-  <div>관리자 페이지_모든 제품 조회</div>
+  <div class="right">
+    <div>모든 제품 조회</div>
+    <ul>
+      <li v-for="product in products" :key="product.id" class="practice">
+        {{ product.title }}: {{ product.price }}원
+      </li>
+    </ul>
+
+    <hr />
+
+    <div class="table">
+      <div class="row head">
+        <div
+          v-for="column in columns"
+          :key="column.field"
+          :style="{ width: `${column.width}px` }"
+          class="column head"
+        >
+          {{ column.name }}
+        </div>
+        <div v-for="(product, index) in products" :key="product.id" class="row">
+          <div
+            v-for="column in columns"
+            :key="column.field"
+            :style="{ width: `${column.width}px` }"
+            class="column"
+          >
+            <template v-if="column.field === 'index'">
+              {{ index + 1 }}
+              {{ product.id }}
+              {{ product.str }}
+            </template>
+            <template v-else-if="column.field === 'isSoldOut'">
+              {{ product[column.field] ? "매진됨" : "제품있음" }}
+            </template>
+            <template v-else>
+              {{ product[column.field] }}
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    products: {},
+  },
+};
 </script>
+
+<style scoped lang="scss">
+.practice {
+  color: red;
+}
+</style>

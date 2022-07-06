@@ -6,13 +6,25 @@
       <div>모든 제품 조회</div>
       <div>제품 추가</div>
       <div>전체 거래 내역</div>
+      <div>
+        <hr />
+        <span>로그아웃 </span><span>홈 </span>
+      </div>
     </div>
-    <hr />
-    <span>로그아웃 </span>
-    <span>홈 </span>
   </div>
 </template>
 <script>
 export default {};
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.left-nav {
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    div {
+    }
+  }
+  border: 1px solid black;
+}
+</style>

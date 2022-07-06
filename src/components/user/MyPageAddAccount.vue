@@ -1,5 +1,5 @@
 <template lang="">
-  <div></div>
+  <div>유저 계좌 추가</div>
 </template>
 <script>
 export default {};
