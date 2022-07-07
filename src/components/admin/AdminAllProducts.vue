@@ -1,11 +1,6 @@
 <template>
   <div class="right">
     <div>모든 제품 조회</div>
-    <ul>
-      <li v-for="product in products" :key="product.id" class="practice">
-        {{ product.title }}: {{ product.price }}원
-      </li>
-    </ul>
 
     <hr />
 
@@ -19,7 +14,11 @@
         >
           {{ column.name }}
         </div>
-        <div v-for="(product, index) in products" :key="product.id" class="row">
+        <div
+          v-for="(product, index) in products"
+          :key="product.id"
+          class="row"
+        >
           <div
             v-for="column in columns"
             :key="column.field"
@@ -27,12 +26,17 @@
             class="column"
           >
             <template v-if="column.field === 'index'">
-              {{ index + 1 }}
               {{ product.id }}
               {{ product.str }}
             </template>
-            <template v-else-if="column.field === 'isSoldOut'">
-              {{ product[column.field] ? "매진됨" : "제품있음" }}
+            <template
+              v-else-if="column.field === 'isSoldOut'"
+            >
+              {{
+                product[column.field]
+                  ? "매진됨"
+                  : "제품있음"
+              }}
             </template>
             <template v-else>
               {{ product[column.field] }}
@@ -48,12 +52,9 @@
 export default {
   props: {
     products: {},
+    columns: {},
   },
 };
 </script>
 
-<style scoped lang="scss">
-.practice {
-  color: red;
-}
-</style>
+<style scoped lang="scss"></style>

@@ -2,8 +2,6 @@
   <!-- 아이템 1 2 3 ... -->
   <ListItem v-for="num in test" :key="num" />
   <!-- 상태관리 적용유무 확인용 -->
-  {{ testStore.message }}
-  {{ testStore.slicedMessage }}
 
   <div class="tags">제주 + 자유여행</div>
   <div class="tags">제주 + 힐링</div>
@@ -11,7 +9,7 @@
 </template>
 <script>
 import { mapStores } from "pinia";
-import { useTestStore } from "/src/store/test";
+import { useTeamStore } from "/src/store/store";
 export default {
   data() {
     return {
@@ -19,7 +17,7 @@ export default {
     };
   },
   computed: {
-    ...mapStores(useTestStore, ["test"]),
+    ...mapStores(useTeamStore),
   },
 };
 </script>

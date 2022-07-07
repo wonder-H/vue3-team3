@@ -22,8 +22,6 @@ export default {};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    div {
-    }
   }
   border: 1px solid black;
 }

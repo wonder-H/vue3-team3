@@ -2,15 +2,7 @@
   <div class="right">
     <div>제품 추가하기</div>
     <hr />
-    <ul class="add-pro-menu">
-      <li>서울</li>
-      <li>경기</li>
-      <li>강원</li>
-      <li>충청</li>
-      <li>전라</li>
-      <li>경상</li>
-      <li>제주</li>
-    </ul>
+    <NavBtnList />
     <form>
       <input value="상품명" />
       <input value="상품 가격" />
@@ -24,7 +16,13 @@
 </template>
 
 <script>
-export default {};
+import NavBtnList from "../NavBtnList.vue";
+
+export default {
+  components: {
+    NavBtnList,
+  },
+};
 </script>
 
 <style scoped lang="scss"></style>

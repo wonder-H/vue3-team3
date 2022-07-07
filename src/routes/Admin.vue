@@ -1,9 +1,14 @@
 <template>
   <div class="flex-container">
     <LeftNav class="left" />
-    <AdminAllProducts :products="teamStore.products" />
+    <!-- <AdminAllProducts
+      :products="teamStore.products"
+      :columns="teamStore.columns"
+    /> -->
+
     <AdminAllTransactions />
-    <!-- <AdminAddProduct /> -->
+    <AdminAddProduct />
+    <AdminEditProduct />
   </div>
 </template>
 
@@ -12,6 +17,7 @@ import LeftNav from "../components/admin/LeftNav.vue";
 import AdminAllProducts from "../components/admin/AdminAllProducts.vue";
 import AdminAllTransactions from "../components/admin/AdminAllTransactions.vue";
 import AdminAddProduct from "../components/admin/AdminAddProduct.vue";
+import AdminEditProduct from "../components/admin/AdminEditProduct.vue";
 import { mapStores } from "pinia";
 import { useTeamStore } from "../store/store";
 
@@ -21,6 +27,7 @@ export default {
     AdminAllProducts,
     AdminAllTransactions,
     AdminAddProduct,
+    AdminEditProduct,
   },
 
   computed: {
@@ -37,7 +44,7 @@ export default {
   }
   .right {
     border: 1px solid red;
-    width: 100vw;
+    width: 1500px;
   }
 }
 </style>

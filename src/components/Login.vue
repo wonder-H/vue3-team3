@@ -3,9 +3,10 @@
   <input value="아이디" />
   <input value="비밀번호" />
   <button>로그인</button>
-  <div>아이디 찾기 | 비밀번호 찾기 | 회원가입</div>
+  <TheFooter />
 </template>
 
 <script>
+import TheFooter from "./TheFooter.vue";
 export default {};
 </script>

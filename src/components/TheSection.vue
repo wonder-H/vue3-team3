@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import MainBanner from "./Main/MainBanner.vue";
-import MainLists from "./Main/MainLists.vue";
-import MainNotice from "./Main/MainNotice.vue";
+import MainBanner from "./main/MainBanner.vue";
+import MainLists from "./main/MainLists.vue";
+import MainNotice from "./main/MainNotice.vue";
 export default {
   components: { MainBanner, MainLists, MainNotice },
 };

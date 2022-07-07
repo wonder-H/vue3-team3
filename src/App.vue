@@ -1,12 +1,19 @@
 <template>
+  <NavBtnList />
   <router-link to="/admin">admin</router-link> |
-  <router-link to="/user">user</router-link>
+  <router-link to="/user">user</router-link> |
+  <router-link to="/login">로그인 작성용</router-link> |
+  <router-link to="/signup">회원가입 작성용</router-link> |
   <RouterView />
 </template>
 
 <script>
+import NavBtnList from "./components/NavBtnList.vue";
+
 export default {
-  components: {},
+  components: {
+    NavBtnList,
+  },
 };
 </script>
 
