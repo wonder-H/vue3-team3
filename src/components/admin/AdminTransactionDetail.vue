@@ -3,7 +3,7 @@
     <h1>관리자 거래내역 상세 페이지</h1>
     <hr />
 
-    <div class="table">
+    <!-- <div class="table">
       <div class="row head">
         <div
           v-for="column in columns"
@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

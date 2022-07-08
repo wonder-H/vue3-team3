@@ -1,5 +1,4 @@
 <template>
-  <NavBtnList />
   <router-link to="/admin">admin</router-link> |
   <router-link to="/user">user</router-link> |
   <router-link to="/login">로그인 작성용</router-link> |
@@ -8,12 +7,8 @@
 </template>
 
 <script>
-import NavBtnList from "./components/NavBtnList.vue";
-
 export default {
-  components: {
-    NavBtnList,
-  },
+  components: {},
 };
 </script>
 

@@ -3,17 +3,18 @@
   <header>
     <div class="inner">
       <div class="logo">FASTOUR</div>
-      <Regions />
+      <NavBtnList />
       <div>회원 아이콘</div>
     </div>
   </header>
 </template>
 
 <script>
-import Regions from "./Regions.vue";
+import NavBtnList from "./NavBtnList.vue";
+
 export default {
   components: {
-    Regions,
+    NavBtnList,
   },
 };
 </script>

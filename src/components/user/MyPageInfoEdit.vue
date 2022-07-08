@@ -15,7 +15,8 @@
     <input value="새로운 비밀번호" />
   </form>
   <div>
-    <img alt="" />
+    <img alt="img" />
+    image.png
     <button>파일선택</button>
   </div>
   <button>수정완료</button>
