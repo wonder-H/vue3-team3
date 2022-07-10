@@ -4,6 +4,8 @@ import router from "./routes";
 import { createPinia } from "pinia";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
+import "./reset.css";
+import "./main.css";
 
 const pinia = createPinia();
 pinia.use(({ store }) => {

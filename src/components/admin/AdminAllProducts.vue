@@ -7,7 +7,7 @@
     <div class="table">
       <div class="row head">
         <div
-          v-for="column in columns"
+          v-for="column in teamStore.columns"
           :key="column.field"
           :style="{ width: `${column.width}px` }"
           class="column head"
@@ -15,12 +15,12 @@
           {{ column.name }}
         </div>
         <div
-          v-for="(product, index) in products"
+          v-for="(product, index) in teamStore.products"
           :key="product.id"
           class="row"
         >
           <div
-            v-for="column in columns"
+            v-for="column in teamStore.columns"
             :key="column.field"
             :style="{ width: `${column.width}px` }"
             class="column"
@@ -49,10 +49,24 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useTeamStore } from "../../store/store";
 export default {
+  computed: {
+    ...mapStores(useTeamStore),
+  },
+  /////////////////////////숙제 //////////////////////////
+  watch: {
+    ["teamStore.products"]() {},
+  },
+
   props: {
     products: {},
     columns: {},
+  },
+
+  created() {
+    this.teamStore.allProducts();
   },
 };
 </script>

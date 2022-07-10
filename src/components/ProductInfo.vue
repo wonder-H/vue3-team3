@@ -1,5 +1,5 @@
 <template>
-  <div>누른 아이템의 상세내용이 있는 곳</div>
+  <div>단일 제품 상세 조회 페이지</div>
 </template>
 
 <script>

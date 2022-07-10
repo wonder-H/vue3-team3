@@ -4,6 +4,9 @@ import Admin from "./Admin.vue";
 import User from "./User.vue";
 import Login from "../components/Login.vue";
 import SignUp from "../components/SignUp.vue";
+import AdminAddProduct from "../components/admin/AdminAddProduct.vue";
+import AdminAllProducts from "../components/admin/AdminAllProducts.vue";
+import MyPageAddAccount from "../components/user/MyPageAddAccount.vue";
 // import Notice from "./Notice.vue";
 // import Product from "./Product.vue";
 
@@ -30,6 +33,18 @@ export default createRouter({
     {
       path: "/signup",
       component: SignUp,
+    },
+    {
+      path: "/addproduct",
+      component: AdminAddProduct,
+    },
+    {
+      path: "/allproducts",
+      component: AdminAllProducts,
+    },
+    {
+      path: "/addaccount",
+      component: MyPageAddAccount,
     },
 
     // {
