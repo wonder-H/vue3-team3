@@ -17,7 +17,7 @@ import LeftNav from "../components/admin/LeftNav.vue";
 import AdminAllProducts from "../components/admin/AdminAllProducts.vue";
 import AdminAllTransactions from "../components/admin/AdminAllTransactions.vue";
 import AdminAddProduct from "../components/admin/AdminAddProduct.vue";
-import AdminEditProduct from "../components/admin/AdminEditProduct.vue";
+import AdminUpdateProduct from "../components/admin/AdminUpdateProduct.vue";
 import { mapStores } from "pinia";
 import { useTeamStore } from "../store/store";
 
@@ -27,7 +27,7 @@ export default {
     AdminAllProducts,
     AdminAllTransactions,
     AdminAddProduct,
-    AdminEditProduct,
+    AdminUpdateProduct,
   },
 
   computed: {

@@ -10,6 +10,10 @@
   |
   <router-link to="/addaccount">계좌 추가하기</router-link>
   |
+  <router-link to="/showaccounts"
+    >계좌 조회하기</router-link
+  >
+  |
   <RouterView />
 </template>
 

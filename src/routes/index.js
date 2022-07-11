@@ -7,6 +7,7 @@ import SignUp from "../components/SignUp.vue";
 import AdminAddProduct from "../components/admin/AdminAddProduct.vue";
 import AdminAllProducts from "../components/admin/AdminAllProducts.vue";
 import MyPageAddAccount from "../components/user/MyPageAddAccount.vue";
+import MyPageAccount from "../components/user/MyPageAccount.vue";
 // import Notice from "./Notice.vue";
 // import Product from "./Product.vue";
 
@@ -45,6 +46,10 @@ export default createRouter({
     {
       path: "/addaccount",
       component: MyPageAddAccount,
+    },
+    {
+      path: "/showaccounts",
+      component: MyPageAccount,
     },
 
     // {
