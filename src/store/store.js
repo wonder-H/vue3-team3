@@ -3,6 +3,10 @@ import axios from "axios";
 
 export const useTeamStore = defineStore("team", {
   state: () => ({
+    userAllTransactions: [],
+    adminAllTransactions: [],
+    token: localStorage.getItem("token"),
+    displayName: "아직 로그인 안됨",
     code: "",
     banks: [],
     accounts: {},
@@ -41,6 +45,10 @@ export const useTeamStore = defineStore("team", {
       });
       console.log("회원가입 결과 및 토큰", res);
       localStorage.setItem("token", res.data.accessToken);
+      localStorage.setItem(
+        "nickName",
+        res.data.user.displayName,
+      );
     },
 
     //로그인
@@ -61,6 +69,10 @@ export const useTeamStore = defineStore("team", {
 
       localStorage.setItem("token", res.data.accessToken);
       console.log("로그인 결과 및 토큰", res);
+      localStorage.setItem(
+        "nickName",
+        res.data.user.displayName,
+      );
     },
 
     //인증 확인
@@ -68,6 +80,34 @@ export const useTeamStore = defineStore("team", {
     //로그아웃
 
     //사용자 정보 수정
+
+    async updateInfo(
+      displayName,
+      oldPassword,
+      newPassword,
+    ) {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/user",
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          Authorization: `Bearer ${this.token}`,
+        },
+        data: {
+          displayName,
+
+          oldPassword,
+          newPassword,
+        },
+      });
+      console.log(res.data);
+      localStorage.setItem(
+        "nickName",
+        res.data.displayName,
+      );
+    },
 
     /////////////////////////////////제품(관리자)////////////////////////////////
 
@@ -90,6 +130,22 @@ export const useTeamStore = defineStore("team", {
     },
 
     //전체 거래(판매) 내역(관리자)
+
+    async showAdminAllTransactions() {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/all",
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          masterKey: true,
+        },
+      });
+
+      console.log(res.data);
+      this.adminAllTransactions = res.data;
+    },
 
     //거래(판매) 내역 완료/취소 및 해제(관리자)
 
@@ -152,7 +208,30 @@ export const useTeamStore = defineStore("team", {
 
     // 제품 검색(사용자 전용)
 
-    // 제품 거래(구매) 신청(사용자 전용)
+    // 제품 거래(구매) 신청(사용자 전용)      /////////////////////미완성
+
+    async buyProduct() {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/buy",
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          Authorization: `Bearer ${this.token}`,
+        },
+        data: {
+          productId: "Ngtd1YBkYRPVmkERU6Zd",
+          accountId: "5FhpH6zwDXLvwMDKMrSP",
+          reservation: {
+            start: "2021-11-12T06:00:00.000Z",
+            end: "2021-11-12T07:00:00.000Z",
+          },
+        },
+      });
+
+      console.log(res);
+    },
 
     // 제품 거래(구매) 취소(사용자 전용)
 
@@ -160,14 +239,28 @@ export const useTeamStore = defineStore("team", {
 
     // 제품 전체 거래(구매) 내역(사용자 전용)
 
+    async showUserAllTransactions() {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/details",
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+
+      this.userAllTransactions = res.data;
+      console.log(res.data);
+    },
+
     // 단일 제품 상세 거래(구매) 내역(사용자 전용)
 
     /////////////////////////////////// 계좌 /////////////////////////////////
 
     // 선택 가능한 은행 목록 조회
     async showBanks() {
-      const token = localStorage.getItem("token");
-
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/account/banks",
         method: "GET",
@@ -175,7 +268,7 @@ export const useTeamStore = defineStore("team", {
           "content-type": "application/json",
           apikey: "FcKdtJs202204",
           username: "team3",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -187,10 +280,6 @@ export const useTeamStore = defineStore("team", {
     //계좌 목록 및 잔액 조회
 
     async showAccounts() {
-      const token = localStorage.getItem("token");
-
-      console.log(token);
-
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/account",
         method: "GET",
@@ -198,7 +287,7 @@ export const useTeamStore = defineStore("team", {
           "content-type": "application/json",
           apikey: "FcKdtJs202204",
           username: "team3",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -213,10 +302,6 @@ export const useTeamStore = defineStore("team", {
       phoneNumber,
       signature,
     ) {
-      const token = localStorage.getItem("token");
-
-      console.log(token);
-
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/account",
         method: "POST",
@@ -224,7 +309,7 @@ export const useTeamStore = defineStore("team", {
           "content-type": "application/json",
           apikey: "FcKdtJs202204",
           username: "team3",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
         data: {
           bankCode: "089",
@@ -240,8 +325,6 @@ export const useTeamStore = defineStore("team", {
     // 계좌 해지
 
     async deleteAccount(id) {
-      const token = localStorage.getItem("token");
-
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/account ",
         method: "DELETE",
@@ -249,7 +332,7 @@ export const useTeamStore = defineStore("team", {
           "content-type": "application/json",
           apikey: "FcKdtJs202204",
           username: "team3",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
         data: {
           accountId: id,

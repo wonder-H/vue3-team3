@@ -2,9 +2,11 @@
   <div>마이페이지 사용자 정보</div>
   <div>
     <div>회원정보</div>
+
     <div>연결된 계좌 목록</div>
   </div>
-  <input value="회원의 닉네임" />
+  <div>회원의 닉네임: {{ teamStore.displayName }}</div>
+
   <div>
     <img src="" alt="img" />
     image.png
@@ -13,5 +15,11 @@
 </template>
 
 <script>
-export default {};
+import { mapStores } from "pinia";
+import { useTeamStore } from "../../store/store";
+export default {
+  computed: {
+    ...mapStores(useTeamStore),
+  },
+};
 </script>

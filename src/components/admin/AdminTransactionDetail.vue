@@ -39,5 +39,11 @@
 </template>
 
 <script>
-export default {};
+import { mapStores } from "pinia";
+import { useTeamStore } from "../../store/store";
+export default {
+  computed: {
+    ...mapStores(useTeamStore),
+  },
+};
 </script>

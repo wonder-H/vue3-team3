@@ -1,9 +1,9 @@
 <template>
-  <div class="swiper">
+  <div class="swiper menu">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 01</div>
+      <div class="swiper-slide">Slide 02</div>
+      <div class="swiper-slide">Slide 03</div>
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-prev"></div>
@@ -15,6 +15,7 @@ import Swiper, {
   Navigation,
   Autoplay,
   Pagination,
+  Grid,
 } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,8 +23,8 @@ import "swiper/css/pagination";
 
 export default {
   mounted() {
-    new Swiper(".swiper", {
-      modules: [Navigation, Autoplay, Pagination],
+    new Swiper(".swiper.menu", {
+      modules: [Navigation, Autoplay, Pagination, Grid],
       // autoplay: {
       //   delay: 3000,
       // },
@@ -35,6 +36,9 @@ export default {
         el: ".swiper-pagination",
         type: "bullets",
       },
+      // grid: {
+      //   rows: 1,
+      // },
     });
   },
 };
@@ -43,6 +47,7 @@ export default {
 .swiper-wrapper {
   height: 456px;
 }
+
 .swiper-button-prev,
 .swiper-button-next {
   width: 42px;
@@ -50,11 +55,13 @@ export default {
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-size: 14px;
   color: #000;
 }
+
 .swiper-horizontal {
   .swiper-pagination-bullets {
     bottom: 42px;
@@ -63,9 +70,9 @@ export default {
 </style>
 
 <style lang="scss">
-.swiper-horizontal {
-  .swiper-pagination-bullets {
-    .swiper-pagination-bullet {
+.swiper01-horizontal {
+  .swiper01-pagination-bullets {
+    .swiper01-pagination-bullet {
       background: #000;
     }
   }

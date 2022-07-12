@@ -1,7 +1,16 @@
-<template lang="">
-  <div>사용자측 구매 내역</div>
+<template>
+  <div>사용자 모든 거래 내역</div>
+  <div>{{ teamStore.userAllTransactions }}</div>
 </template>
 <script>
-export default {};
+import { mapStores } from "pinia";
+import { useTeamStore } from "../../store/store";
+export default {
+  computed: {
+    ...mapStores(useTeamStore),
+  },
+  created() {
+    this.teamStore.showUserAllTransactions();
+  },
+};
 </script>
-<style lang=""></style>

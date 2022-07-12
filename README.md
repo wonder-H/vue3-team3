@@ -12,6 +12,7 @@
 - Postcss
 - Vite
 - scss + Bootstrap 5 (5.2.0-beta1)
+- Swiper
 
 ## Getting started
 
