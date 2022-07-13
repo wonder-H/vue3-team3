@@ -38,10 +38,19 @@
                   : "제품있음"
               }}
             </template>
+
             <template v-else>
               {{ product[column.field] }}
             </template>
           </div>
+
+          <button
+            @click="
+              $router.push(`/allproducts/${product.id}`)
+            "
+          >
+            상품 {{ product.id }} 수정하기
+          </button>
         </div>
       </div>
     </div>
@@ -55,7 +64,7 @@ export default {
   computed: {
     ...mapStores(useTeamStore),
   },
-  /////////////////////////숙제 //////////////////////////
+
   watch: {
     ["teamStore.products"]() {},
   },

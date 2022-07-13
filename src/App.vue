@@ -7,6 +7,10 @@
   <router-link to="/login">로그인 작성용</router-link> |
   <router-link to="/signup">회원가입 작성용</router-link> |
   <router-link to="/addproduct">제품 추가</router-link> |
+  <router-link to="/allproducts/:asdasdasd"
+    >제품 수정</router-link
+  >
+  |
   <router-link to="/allproducts"
     >모든 제품 조회</router-link
   >

@@ -1,31 +1,37 @@
 <template>
-  <!-- 아이템 1 2 3 ... -->
-  <ListItem v-for="num in test" :key="num" />
-  <!-- 상태관리 적용유무 확인용 -->
-  <div class="tags">
-    <h2>제주 + 자유여행</h2>
-    <MainListSlider />
-  </div>
-  <!-- <div class="tags">제주 + 힐링</div>
-  <div class="tags">제주 + 맛집투어</div> -->
+  <ul class="main-lists">
+    <li>
+      <div class="main-lists__img"></div>
+    </li>
+    <li>
+      <MainListSlider />
+    </li>
+  </ul>
 </template>
 <script>
-import { mapStores } from "pinia";
-import { useTeamStore } from "/src/store/store";
 import MainListSlider from "../MainListSlider.vue";
 
 export default {
-  computed: {
-    ...mapStores(useTeamStore),
-  },
   components: {
     MainListSlider,
   },
 };
 </script>
+
 <style scoped lang="scss">
-div {
-  border: 2px solid yellowgreen;
-  height: 100px;
+.main-lists {
+  display: flex;
+  height: 304px;
+  li {
+    width: 100%;
+    .main-lists__img {
+      width: 100%;
+      height: 100%;
+      background-color: #d9d9d9;
+    }
+  }
+  li:last-child {
+    width: 75%;
+  }
 }
 </style>

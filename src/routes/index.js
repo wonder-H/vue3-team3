@@ -6,6 +6,7 @@ import Login from "../components/Login.vue";
 import SignUp from "../components/SignUp.vue";
 import AdminAddProduct from "../components/admin/AdminAddProduct.vue";
 import AdminAllProducts from "../components/admin/AdminAllProducts.vue";
+import AdminUpdateProduct from "../components/admin/AdminUpdateProduct.vue";
 import AdminAllTransactions from "../components/admin/AdminAllTransactions.vue";
 import MyPageAddAccount from "../components/user/MyPageAddAccount.vue";
 import MyPageAccount from "../components/user/MyPageAccount.vue";
@@ -56,6 +57,11 @@ export default createRouter({
       path: "/allproducts",
       component: AdminAllProducts,
     },
+    {
+      path: "/allproducts/:id",
+      component: AdminUpdateProduct,
+    },
+
     {
       path: "/addaccount",
       component: MyPageAddAccount,

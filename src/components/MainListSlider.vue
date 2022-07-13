@@ -1,80 +1,59 @@
 <template>
-  <div class="swiper menu">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 01</div>
-      <div class="swiper-slide">Slide 02</div>
-      <div class="swiper-slide">Slide 03</div>
-    </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+  <swiper
+    :slidesPerView="3"
+    :slidesPerGroup="3"
+    :loop="true"
+    :loopFillGroupWithBlank="true"
+    :pagination="{
+      clickable: true,
+    }"
+    :navigation="true"
+    :modules="modules"
+    class="main-list-swiper"
+  >
+    <swiper-slide>Slide 1</swiper-slide
+    ><swiper-slide>Slide 2</swiper-slide
+    ><swiper-slide>Slide 3</swiper-slide
+    ><swiper-slide>Slide 4</swiper-slide
+    ><swiper-slide>Slide 5</swiper-slide
+    ><swiper-slide>Slide 6</swiper-slide
+    ><swiper-slide>Slide 7</swiper-slide
+    ><swiper-slide>Slide 8</swiper-slide
+    ><swiper-slide>Slide 9</swiper-slide>
+  </swiper>
 </template>
 <script>
-import Swiper, {
-  Navigation,
-  Autoplay,
-  Pagination,
-  Grid,
-} from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Pagination, Navigation } from "swiper";
 
 export default {
-  mounted() {
-    new Swiper(".swiper.menu", {
-      modules: [Navigation, Autoplay, Pagination, Grid],
-      // autoplay: {
-      //   delay: 3000,
-      // },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        type: "bullets",
-      },
-      // grid: {
-      //   rows: 1,
-      // },
-    });
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    return {
+      modules: [Pagination, Navigation],
+    };
   },
 };
 </script>
-<style scoped lang="scss">
-.swiper-wrapper {
-  height: 456px;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  width: 42px;
-  height: 42px;
-  border-radius: 6px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 14px;
-  color: #000;
-}
-
-.swiper-horizontal {
-  .swiper-pagination-bullets {
-    bottom: 42px;
-  }
-}
-</style>
-
 <style lang="scss">
-.swiper01-horizontal {
-  .swiper01-pagination-bullets {
-    .swiper01-pagination-bullet {
-      background: #000;
-    }
+.main-list-swiper {
+  height: 100%;
+  .swiper-wrapper div {
+    background-color: #d9d9d9;
+    height: 100%;
   }
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 0;
+    height: 100%;
+    margin: 0;
+    background-color: #fff;
+  }
+  // .swiper-button-disabled {
+  //   opacity: 0;
+  // }
 }
 </style>

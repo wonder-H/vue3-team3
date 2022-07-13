@@ -10,6 +10,7 @@ export const useTeamStore = defineStore("team", {
     code: "",
     banks: [],
     accounts: {},
+    thatproduct: {},
     products: [],
     columns: [
       {
@@ -172,39 +173,61 @@ export const useTeamStore = defineStore("team", {
 
     // 제품 수정(관리자)
 
-    // async updateProduct() {
-    //   const res = await axios({
-    //     url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/:productId",
-    //     method: "PUT",
-    //     headers: {
-    //       "content-type": "application/json",
-    //       apikey: "FcKdtJs202204",
-    //       username: "team3",
-    //       masterKey: true,
-    //     },
-    //     data: {
-    //       id: "nbqtQvEivYwEXTDet7YM",
-    //       title: "MacBook Pro 16",
-    //       price: 1500,
-    //       description:
-    //         "역대 가장 강력한 MacBook Pro가 등장했습니다. 최초의 프로용 Apple Silicon인 M1 Pro 또는 M1 Max 칩을 탑재해 쏜살같이 빠른 속도는 물론, 획기적인 성능과 놀라운 배터리 사용 시간을 자랑하죠. 여기에 시선을 사로잡는 Liquid Retina XDR 디스플레이, Mac 노트북 사상 최고의 카메라 및 오디오 그리고 더할 나위 없이 다양한 포트까지. 기존 그 어떤 카테고리에도 속하지 않는 노트북. 새로운 MacBook Pro는 그야말로 야수입니다.",
-    //       tags: ["가전", "노트북", "컴퓨터"],
-    //       thumbnail:
-    //         "https://storage.googleapis.com/heropy-api/vIKMk_jy4Yv195256.png",
-    //       photo:
-    //         "https://storage.googleapis.com/heropy-api/voihKb3NLGcv195257.png",
-    //       isSoldOut: false,
-    //     },
-    //   });
+    async updateProduct(
+      id,
+      title,
+      price,
+      description,
+      tags,
+      thumbnail,
+      photo,
+      isSoldOut,
+    ) {
+      const res = await axios({
+        url: `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          masterKey: true,
+        },
+        data: {
+          title,
+          price,
+          description,
+          tags,
+          thumbnail,
+          photo,
+          isSoldOut,
+        },
+      });
 
-    //   console.log(res);
-    // },
+      console.log(res);
+    },
 
     // 제품 삭제(관리자)
 
     /////////////////// 제품(공용 or 사용자) ////////////////////////////
 
     // 단일 제품 상세 조회(공용)
+
+    async readProduct(id) {
+      const res = await axios({
+        url: `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+        },
+      });
+
+      console.log(res);
+      console.log("단일제품의 ID:", id);
+
+      this.thatproduct = res.data;
+    },
 
     // 제품 검색(사용자 전용)
 
@@ -256,6 +279,24 @@ export const useTeamStore = defineStore("team", {
     },
 
     // 단일 제품 상세 거래(구매) 내역(사용자 전용)
+
+    async readTransaction(id) {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/detail",
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          Authorization: `Bearer ${this.token}`,
+        },
+        data: {
+          detailId: id,
+        },
+      });
+
+      console.log(res.data);
+    },
 
     /////////////////////////////////// 계좌 /////////////////////////////////
 
