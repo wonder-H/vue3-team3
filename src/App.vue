@@ -31,8 +31,7 @@
     >사용자 모든 거래내역</router-link
   >
   |
-  <router-link to="/buyproduct">물건 구매하기</router-link>
-  |
+
   <RouterView />
 </template>
 

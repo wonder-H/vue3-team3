@@ -21,6 +21,20 @@
             />
           </svg>
         </li>
+        <li>
+          <button
+            v-if="!teamStore.isLoggedin"
+            @click="$router.push(`/login`)"
+          >
+            로그인
+          </button>
+          <button
+            v-if="teamStore.isLoggedin"
+            @click="teamStore.logout()"
+          >
+            로그아웃
+          </button>
+        </li>
       </ul>
     </div>
   </header>
@@ -28,10 +42,14 @@
 
 <script>
 import NavBtnList from "./NavBtnList.vue";
-
+import { mapStores } from "pinia";
+import { useTeamStore } from "../store/store";
 export default {
   components: {
     NavBtnList,
+  },
+  computed: {
+    ...mapStores(useTeamStore),
   },
 };
 </script>

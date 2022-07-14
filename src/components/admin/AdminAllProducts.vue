@@ -65,10 +65,6 @@ export default {
     ...mapStores(useTeamStore),
   },
 
-  watch: {
-    ["teamStore.products"]() {},
-  },
-
   props: {
     products: {},
     columns: {},

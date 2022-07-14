@@ -3,6 +3,8 @@ import axios from "axios";
 
 export const useTeamStore = defineStore("team", {
   state: () => ({
+    isLoggedin: false,
+    searchResults: [],
     userAllTransactions: [],
     adminAllTransactions: [],
     token: localStorage.getItem("token"),
@@ -24,6 +26,10 @@ export const useTeamStore = defineStore("team", {
       { field: "isSoldOut", name: "매진", width: 100 },
     ],
   }),
+
+  // getters: {
+  //   getTheToken(state) => state.token ,  /////// 토큰 getItem 문제 처리
+  // },
 
   actions: {
     //////////////////////////////////인증//////////////////////////////////
@@ -74,11 +80,28 @@ export const useTeamStore = defineStore("team", {
         "nickName",
         res.data.user.displayName,
       );
+      this.isLoggedin = true;
     },
 
     //인증 확인
 
     //로그아웃
+
+    async logout() {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/logout",
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+      console.log(res.data);
+      localStorage.removeItem("token");
+      this.isLoggedin = false;
+    },
 
     //사용자 정보 수정
 
@@ -208,7 +231,25 @@ export const useTeamStore = defineStore("team", {
 
     // 제품 삭제(관리자)
 
-    /////////////////// 제품(공용 or 사용자) ////////////////////////////
+    async deleteProduct(id) {
+      const res = await axios({
+        url: `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`,
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          masterKey: true,
+        },
+      });
+
+      console.log(res);
+      console.log("단일제품의 ID:", id);
+
+      this.thatproduct = res.data;
+    },
+
+    //////////////////////////////////// 제품(공용 or 사용자) ///////////////////////////////
 
     // 단일 제품 상세 조회(공용)
 
@@ -229,11 +270,31 @@ export const useTeamStore = defineStore("team", {
       this.thatproduct = res.data;
     },
 
-    // 제품 검색(사용자 전용)
+    // 제품 검색(사용자 전용 ) // 메인리스트 슬라이더 및 사용자가 상품을 조회하는 용도
+
+    async searchProducts(searchText, searchTags) {
+      const res = await axios({
+        url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/search",
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+        },
+        data: {
+          searchText,
+          searchTags,
+        },
+      });
+
+      console.log(res.data);
+
+      this.searchResults = res.data;
+    },
 
     // 제품 거래(구매) 신청(사용자 전용)      /////////////////////미완성
 
-    async buyProduct() {
+    async buyProduct(productId, accountId) {
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/buy",
         method: "POST",
@@ -244,8 +305,8 @@ export const useTeamStore = defineStore("team", {
           Authorization: `Bearer ${this.token}`,
         },
         data: {
-          productId: "Ngtd1YBkYRPVmkERU6Zd",
-          accountId: "5FhpH6zwDXLvwMDKMrSP",
+          productId,
+          accountId,
           reservation: {
             start: "2021-11-12T06:00:00.000Z",
             end: "2021-11-12T07:00:00.000Z",
@@ -253,7 +314,7 @@ export const useTeamStore = defineStore("team", {
         },
       });
 
-      console.log(res);
+      console.log(res.data);
     },
 
     // 제품 거래(구매) 취소(사용자 전용)

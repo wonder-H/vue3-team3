@@ -13,7 +13,8 @@ import MyPageAccount from "../components/user/MyPageAccount.vue";
 import MyPageUpdateInfo from "../components/user/MyPageUpdateInfo.vue";
 import MyPageAllTransactions from "../components/user/MyPageAllTransactions.vue";
 import MyPageInfo from "../components/user/MyPageInfo.vue";
-import ProductInfo from "../components/ProductInfo.vue";
+import ProductDetail from "../components/ProductDetail.vue";
+import BuyPage from "../components/BuyPage.vue";
 // import Notice from "./Notice.vue";
 // import Product from "./Product.vue";
 
@@ -79,8 +80,12 @@ export default createRouter({
       component: MyPageInfo,
     },
     {
-      path: "/buyproduct",
-      component: ProductInfo,
+      path: "/productdetail/:id",
+      component: ProductDetail,
+    },
+    {
+      path: "/buypage/:id",
+      component: BuyPage,
     },
 
     // {

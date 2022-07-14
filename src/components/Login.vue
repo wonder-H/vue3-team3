@@ -6,7 +6,12 @@
     v-model="password"
     placeholder="비밀번호"
   />
-  <button @click="teamStore.login(email, password)">
+  <button
+    @click="
+      teamStore.login(email, password),
+        $router.push('/user')
+    "
+  >
     로그인
   </button>
   <hr />
