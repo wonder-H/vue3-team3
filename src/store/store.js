@@ -173,6 +173,29 @@ export const useTeamStore = defineStore("team", {
 
     //거래(판매) 내역 완료/취소 및 해제(관리자)
 
+    async transactionCompleteAndCancel(
+      id,
+      isCanceled,
+      done,
+    ) {
+      const res = await axios({
+        url: `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/transactions/${id}`,
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          apikey: "FcKdtJs202204",
+          username: "team3",
+          masterKey: true,
+        },
+        data: {
+          isCanceled,
+          done,
+        },
+      });
+
+      console.log(res);
+    },
+
     // 제품 추가(관리자)
     async addProduct(title, price, description) {
       const res = await axios({
@@ -339,7 +362,7 @@ export const useTeamStore = defineStore("team", {
       console.log(res.data);
     },
 
-    // 단일 제품 상세 거래(구매) 내역(사용자 전용)
+    // 단일 제품 상세 거래(구매) 내역(사용자 전용임)
 
     async readTransaction(id) {
       const res = await axios({

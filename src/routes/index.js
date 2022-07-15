@@ -8,6 +8,7 @@ import AdminAddProduct from "../components/admin/AdminAddProduct.vue";
 import AdminAllProducts from "../components/admin/AdminAllProducts.vue";
 import AdminUpdateProduct from "../components/admin/AdminUpdateProduct.vue";
 import AdminAllTransactions from "../components/admin/AdminAllTransactions.vue";
+import AdminTransactionDetail from "../components/admin/AdminTransactionDetail.vue";
 import MyPageAddAccount from "../components/user/MyPageAddAccount.vue";
 import MyPageAccount from "../components/user/MyPageAccount.vue";
 import MyPageUpdateInfo from "../components/user/MyPageUpdateInfo.vue";
@@ -33,6 +34,10 @@ export default createRouter({
     {
       path: "/adminalltransactions",
       component: AdminAllTransactions,
+    },
+    {
+      path: "/adminalltransactions/:id",
+      component: AdminTransactionDetail,
     },
     {
       path: "/user",

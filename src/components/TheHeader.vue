@@ -60,6 +60,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 1044px;
+  margin: 0 auto;
   .logo {
     font-size: 20px;
   }

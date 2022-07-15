@@ -11,14 +11,17 @@
     </button>
   </div>
 
-  <ul class="main-lists">
-    <li>
-      <div class="main-lists__img"></div>
-    </li>
-    <li>
-      <MainListSlider />
-    </li>
-  </ul>
+  <div class="wrapper">
+    <h2>제주 && 자유여행</h2>
+    <ul class="main-lists">
+      <li>
+        <div class="main-lists__img"></div>
+      </li>
+      <li>
+        <MainListSlider />
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 import MainListSlider from "../MainListSlider.vue";
@@ -38,20 +41,31 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.main-lists {
-  display: flex;
-  height: 304px;
-  li {
-    width: 100%;
-    margin: 0 6px;
-    .main-lists__img {
-      width: 100%;
-      height: 100%;
-      background-color: #d9d9d9;
-    }
+.wrapper {
+  width: 1044px;
+  margin: 0 auto;
+  h2 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 76px;
+    text-indent: 12px;
   }
-  li:last-child {
-    width: 75%;
+  .main-lists {
+    display: flex;
+    height: 304px;
+    li {
+      width: 100%;
+      .main-lists__img {
+        width: auto;
+        height: 100%;
+        background-color: #d9d9d9;
+        margin: 0 6px;
+        border-radius: 10px;
+      }
+    }
+    li:last-child {
+      width: 75%;
+    }
   }
 }
 </style>

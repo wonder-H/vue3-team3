@@ -87,6 +87,9 @@ import {
 } from "swiper";
 
 export default {
+  data() {
+    return {};
+  },
   components: {
     Swiper,
     SwiperSlide,
@@ -95,6 +98,9 @@ export default {
     return {
       modules: [Navigation, Pagination, Keyboard],
     };
+  },
+  created() {
+    검색기능(x, y);
   },
 };
 </script>
@@ -105,24 +111,26 @@ export default {
 }
 .main-list-swiper {
   height: 100%;
-  .wrapper {
-    margin: 0 6px;
-    .img {
-      width: auto;
-      height: 152px;
-      border-radius: 10px;
-      background-color: #d9d9d9;
-    }
-    .contents {
-      padding-top: 28px;
-      h2 {
-        font-size: 16px;
-        margin-bottom: 4px;
-        font-weight: 700;
+  .swiper-slide {
+    .wrapper {
+      margin: 0 6px;
+      .img {
+        width: auto;
+        height: 152px;
+        border-radius: 10px;
+        background-color: #d9d9d9;
       }
-      span {
-        font-size: 14px;
-        line-height: 20px;
+      .contents {
+        padding-top: 28px;
+        h2 {
+          font-size: 16px;
+          margin-bottom: 4px;
+          font-weight: 700;
+        }
+        span {
+          font-size: 14px;
+          line-height: 20px;
+        }
       }
     }
   }
