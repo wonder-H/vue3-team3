@@ -1,5 +1,5 @@
 <template>
-  <div v-for="searchResult in teamStore.searchResults">
+  <!-- <div v-for="searchResult in teamStore.searchResults">
     "{{ searchResult.title }}" 상품, id:
     {{ searchResult.id }}
     <button
@@ -9,7 +9,7 @@
     >
       해당 아이디 구매페이지로 이동
     </button>
-  </div>
+  </div> -->
 
   <div class="wrapper">
     <h2>제주 && 자유여행</h2>
@@ -35,7 +35,7 @@ export default {
     MainListSlider,
   },
   created() {
-    this.teamStore.searchProducts();
+    // this.teamStore.searchProducts();
   },
 };
 </script>

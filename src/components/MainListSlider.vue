@@ -9,69 +9,18 @@
     class="main-list-swiper"
   >
     <swiper-slide
-      ><div class="wrapper">
+      v-for="searchResult in filteredResults"
+      @click="
+        $router.push(`/productdetail/${searchResult.id}`)
+      "
+    >
+      <div class="wrapper">
         <div class="img"></div>
         <div class="contents">
-          <h2>자연과 함께하는 힐링, 영월</h2>
-          <span
-            >자연이 빚어낸 도시, 영월의 자연을 듬뿍 느낄 수
-            있는 여행 코스</span
-          >
-        </div>
-      </div> </swiper-slide
-    ><swiper-slide
-      ><div class="wrapper">
-        <div class="img"></div>
-        <div class="contents">
-          <h2>자연과 함께하는 힐링, 영월</h2>
-          <span
-            >자연이 빚어낸 도시, 영월의 자연을 듬뿍 느낄 수
-            있는 여행 코스</span
-          >
-        </div>
-      </div> </swiper-slide
-    ><swiper-slide
-      ><div class="wrapper">
-        <div class="img"></div>
-        <div class="contents">
-          <h2>자연과 함께하는 힐링, 영월</h2>
-          <span
-            >자연이 빚어낸 도시, 영월의 자연을 듬뿍 느낄 수
-            있는 여행 코스</span
-          >
-        </div>
-      </div> </swiper-slide
-    ><swiper-slide
-      ><div class="wrapper">
-        <div class="img"></div>
-        <div class="contents">
-          <h2>자연과 함께하는 힐링, 영월</h2>
-          <span
-            >자연이 빚어낸 도시, 영월의 자연을 듬뿍 느낄 수
-            있는 여행 코스</span
-          >
-        </div>
-      </div> </swiper-slide
-    ><swiper-slide
-      ><div class="wrapper">
-        <div class="img"></div>
-        <div class="contents">
-          <h2>자연과 함께하는 힐링, 영월</h2>
-          <span
-            >자연이 빚어낸 도시, 영월의 자연을 듬뿍 느낄 수
-            있는 여행 코스</span
-          >
-        </div>
-      </div> </swiper-slide
-    ><swiper-slide
-      ><div class="wrapper">
-        <div class="img"></div>
-        <div class="contents">
-          <h2>자연과 함께하는 힐링, 영월</h2>
-          <span
-            >자연이 빚어낸 도시, 영월의 자연을 듬뿍 느낄 수
-            있는 여행 코스</span
-          >
+          <h2>{{ searchResult.title }}</h2>
+          <span>
+            {{ searchResult.description }}
+          </span>
         </div>
       </div>
     </swiper-slide>
@@ -79,6 +28,8 @@
 </template>
 <script>
 import { Swiper, SwiperSlide } from "swiper/vue";
+import { mapStores } from "pinia";
+import { useTeamStore } from "../store/store";
 import {
   Navigation,
   Pagination,
@@ -88,7 +39,12 @@ import {
 
 export default {
   data() {
-    return {};
+    return {
+      filteredResults: null,
+    };
+  },
+  computed: {
+    ...mapStores(useTeamStore),
   },
   components: {
     Swiper,
@@ -99,8 +55,16 @@ export default {
       modules: [Navigation, Pagination, Keyboard],
     };
   },
-  created() {
-    검색기능(x, y);
+
+  async mounted() {
+    // console.log(useTeamStore);
+
+    await this.teamStore.searchProducts();
+
+    this.filteredResults =
+      this.teamStore.searchResults.filter(
+        (item) => item.title === "삼성노트북",
+      );
   },
 };
 </script>
@@ -113,6 +77,7 @@ export default {
   height: 100%;
   .swiper-slide {
     .wrapper {
+      cursor: pointer;
       margin: 0 6px;
       .img {
         width: auto;
@@ -144,7 +109,7 @@ export default {
     margin: 0;
     background-color: #fff;
     width: 72px;
-    opacity: 80%;
+    opacity: 0.8;
     display: none;
   }
   .swiper-button-prev:after,

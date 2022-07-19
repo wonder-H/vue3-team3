@@ -197,7 +197,23 @@ export const useTeamStore = defineStore("team", {
     },
 
     // 제품 추가(관리자)
-    async addProduct(title, price, description) {
+    async addProduct(
+      title,
+      price,
+      description,
+      tags,
+      thumbnailBase64,
+      photoBase64,
+    ) {
+      console.log(
+        "addProduct에 들어온 데이터",
+        title,
+        price,
+        description,
+        tags,
+        thumbnailBase64,
+        photoBase64,
+      );
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products",
         method: "POST",
@@ -211,6 +227,9 @@ export const useTeamStore = defineStore("team", {
           title,
           price,
           description,
+          tags,
+          thumbnailBase64,
+          photoBase64,
         },
       });
 

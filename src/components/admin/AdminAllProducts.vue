@@ -51,6 +51,7 @@
           >
             상품 {{ product.id }} 수정하기
           </button>
+          <img :src="product.thumbnail" alt="대체 이미지" />
         </div>
       </div>
     </div>
@@ -76,4 +77,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+img {
+  width: 300px;
+}
+</style>
