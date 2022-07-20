@@ -15,9 +15,17 @@
       "
     >
       <div class="wrapper">
-        <div class="img"></div>
+        <div
+          class="img"
+          :style="{
+            'background-image': `url(
+              ${searchResult.thumbnail})`,
+          }"
+        ></div>
         <div class="contents">
-          <h2>{{ searchResult.title }}</h2>
+          <h2>
+            {{ searchResult.title }}
+          </h2>
           <span>
             {{ searchResult.description }}
           </span>
@@ -55,15 +63,14 @@ export default {
       modules: [Navigation, Pagination, Keyboard],
     };
   },
-
   async mounted() {
-    // console.log(useTeamStore);
+    // console.log(this.teamStore.searchResults);
 
     await this.teamStore.searchProducts();
 
     this.filteredResults =
       this.teamStore.searchResults.filter(
-        (item) => item.title === "삼성노트북",
+        (item) => item.tags[0] === "제주도",
       );
   },
 };
@@ -84,6 +91,8 @@ export default {
         height: 152px;
         border-radius: 10px;
         background-color: #d9d9d9;
+        background-size: cover;
+        background-position: center;
       }
       .contents {
         padding-top: 28px;

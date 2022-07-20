@@ -1,4 +1,4 @@
-<template lang="">
+<template>
   <TheHeader />
   <div>마이페이지 계좌 조회하기</div>
 
@@ -33,4 +33,8 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style lang="scss" scoped>
+button {
+  border: 2px solid blue;
+}
+</style>

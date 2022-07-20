@@ -21,11 +21,12 @@
         placeholder="태그칸"
         :value="teamStore.thatproduct.tags"
       />
-      <input
+      <div>기존 썸네일</div>
+      <img
         ref="thumbnail"
-        placeholder="썸네일칸"
-        :value="teamStore.thatproduct.thumbnail"
+        :src="teamStore.thatproduct.thumbnail"
       />
+
       <input
         ref="photo"
         placeholder="사진칸"

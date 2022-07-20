@@ -35,7 +35,12 @@ export const useTeamStore = defineStore("team", {
     //////////////////////////////////인증//////////////////////////////////
 
     // 회원가입
-    async signUp(email, password, displayName) {
+    async signUp(
+      email,
+      password,
+      displayName,
+      profileImgBase64,
+    ) {
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/signup",
         method: "POST",
@@ -48,6 +53,7 @@ export const useTeamStore = defineStore("team", {
           email,
           password,
           displayName,
+          profileImgBase64,
         },
       });
       console.log("회원가입 결과 및 토큰", res);
@@ -205,15 +211,6 @@ export const useTeamStore = defineStore("team", {
       thumbnailBase64,
       photoBase64,
     ) {
-      console.log(
-        "addProduct에 들어온 데이터",
-        title,
-        price,
-        description,
-        tags,
-        thumbnailBase64,
-        photoBase64,
-      );
       const res = await axios({
         url: "https://asia-northeast3-heropy-api.cloudfunctions.net/api/products",
         method: "POST",
@@ -233,7 +230,7 @@ export const useTeamStore = defineStore("team", {
         },
       });
 
-      console.log(res);
+      console.log(res.data);
     },
 
     // 제품 수정(관리자)
@@ -289,6 +286,7 @@ export const useTeamStore = defineStore("team", {
       console.log("단일제품의 ID:", id);
 
       this.thatproduct = res.data;
+      this.allProducts();
     },
 
     //////////////////////////////////// 제품(공용 or 사용자) ///////////////////////////////
@@ -306,7 +304,7 @@ export const useTeamStore = defineStore("team", {
         },
       });
 
-      console.log(res);
+      console.log(res.data);
       console.log("단일제품의 ID:", id);
 
       this.thatproduct = res.data;
@@ -456,13 +454,13 @@ export const useTeamStore = defineStore("team", {
           Authorization: `Bearer ${this.token}`,
         },
         data: {
-          bankCode: "089",
-          accountNumber: "123456789012",
-          phoneNumber: "01012345678",
-          signature: true,
+          bankCode,
+          accountNumber,
+          phoneNumber,
+          signature,
         },
       });
-
+      this.showBanks();
       console.log(res.data);
     },
 

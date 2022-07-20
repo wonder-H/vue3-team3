@@ -1,24 +1,73 @@
-<template lang="">
+<template>
   <div>유저 계좌 추가하기</div>
-  <ul style="display: flex">
-    <li v-for="bank in teamStore.banks">
-      {{ bank.name }}
-    </li>
-  </ul>
-  <input placeholder="계좌번호" />
-  <input placeholder="사용자 전화번호" />
-  <input type="checkbox" /><span
+  <div style="display: flex">
+    <label
+      :id="bank.code"
+      class="bank"
+      v-for="bank in teamStore.banks"
+    >
+      <input
+        :id="bank.code"
+        type="radio"
+        :value="bank.code"
+        v-model="bankCode"
+      />
+
+      {{ bank.name }} <br />
+      은행코드: {{ bank.code }} <br />
+      계좌번호예시:{{ bank.digits }}<br />
+      계좌보유여부:
+      {{ bank.disabled ? "보유" : "미보유" }}
+    </label>
+
+    <!-- <li
+      
+      
+      :value="bank.code"
+      @click="bankCodeSelect"
+    > -->
+
+    <!-- v-bind:class="{ on: true }" -->
+  </div>
+  <div>선택된 은행 코드: {{ bankCode }}</div>
+  <input v-model="accountNumber" placeholder="계좌번호" />
+
+  <input
+    v-model="phoneNumber"
+    placeholder="사용자 전화번호"
+  />
+  <input type="checkbox" v-model="signature" /><span
     >약관을 읽었으며 정보제공에 동의합니다</span
   >
+  <div>{{ signature }}</div>
 
-  <button @click="teamStore.addAccount">
+  <button
+    @click="
+      teamStore.addAccount(
+        bankCode,
+        accountNumber,
+        phoneNumber,
+        signature,
+      )
+    "
+  >
     계좌 추가하기
   </button>
 </template>
 <script>
 import { mapStores } from "pinia";
 import { useTeamStore } from "../../store/store";
+
 export default {
+  data() {
+    return {
+      bankCode: "",
+      accountNumber: "",
+      phoneNumber: "",
+      signature: false,
+    };
+  },
+
   computed: {
     ...mapStores(useTeamStore),
   },
@@ -28,6 +77,26 @@ export default {
   created() {
     this.teamStore.showBanks();
   },
+  methods: {
+    bankCodeSelect(e) {
+      this.bankCode = e.target._value;
+
+      //HTMLElement.focus()
+    },
+  },
 };
 </script>
-<style lang=""></style>
+<style lang="scss" scoped>
+.bank {
+  padding: 10px;
+  border: 2px solid blue;
+
+  &:active {
+    border: 2px solid red;
+  }
+
+  /* &.on {
+    color: yellow;
+  } */
+}
+</style>

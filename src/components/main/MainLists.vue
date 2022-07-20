@@ -12,7 +12,7 @@
   </div> -->
 
   <div class="wrapper">
-    <h2>제주 && 자유여행</h2>
+    <h2>제주 7 힐링</h2>
     <ul class="main-lists">
       <li>
         <div class="main-lists__img"></div>
@@ -54,7 +54,7 @@ export default {
     display: flex;
     height: 304px;
     li {
-      width: 100%;
+      width: 25%;
       .main-lists__img {
         width: auto;
         height: 100%;

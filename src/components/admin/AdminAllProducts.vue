@@ -44,6 +44,7 @@
             </template>
           </div>
 
+          <img :src="product.thumbnail" alt="대체 이미지" />
           <button
             @click="
               $router.push(`/allproducts/${product.id}`)
@@ -51,7 +52,11 @@
           >
             상품 {{ product.id }} 수정하기
           </button>
-          <img :src="product.thumbnail" alt="대체 이미지" />
+          <button
+            @click="teamStore.deleteProduct(product.id)"
+          >
+            상품 {{ product.id }} 삭제하기
+          </button>
         </div>
       </div>
     </div>
@@ -79,6 +84,9 @@ export default {
 
 <style scoped lang="scss">
 img {
-  width: 300px;
+  width: 200px;
+}
+button {
+  border: 2px solid black;
 }
 </style>

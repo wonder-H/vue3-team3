@@ -1,5 +1,4 @@
 <template>
-  <TheHeader />
   <div>회원가입 페이지</div>
   <form>
     <input
@@ -17,15 +16,19 @@
       v-model="password"
       placeholder="비밀번호"
     />
-    <input
-      type="text"
-      v-model="password2"
-      placeholder="비밀번호 확인"
-    />
-    <input type="text" placeholder="이미지 삽입: img.png" />
+
+    <input type="file" @change="loadImage" />
+    <img v-if="profileImgBase64" :src="profileImgBase64" />
   </form>
   <button
-    @click="teamStore.signUp(email, password, displayName)"
+    @click="
+      teamStore.signUp(
+        email,
+        password,
+        displayName,
+        profileImgBase64.split(',')[1],
+      )
+    "
   >
     회원가입
   </button>
@@ -43,7 +46,7 @@ export default {
       email: "",
       displayName: "",
       password: "",
-      password2: "",
+      profileImgBase64: "",
     };
   },
   computed: {
@@ -53,15 +56,34 @@ export default {
     TheHeader,
     TheFooter,
   },
+  methods: {
+    loadImage(e) {
+      const files = e.target.files;
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", async (e) => {
+          this.profileImgBase64 = await e.target.result; // data:image/jpeg;base64, qwhdfskldasjhfklasjdhfkjahdsfkjahsdfkjashdfkjhsdaf
+        });
+      }
+    },
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 form {
-  border: 2px solid blue;
-
   input {
     display: block;
   }
+
+  img {
+    width: 100px;
+  }
+}
+button {
+  border: 2px solid blue;
 }
 </style>

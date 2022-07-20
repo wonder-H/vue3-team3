@@ -43,3 +43,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+button {
+  border: 1px solid blue;
+}
+</style>
