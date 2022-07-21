@@ -38,12 +38,19 @@
                   : "제품있음"
               }}
             </template>
+            <!-- 제주 강원 서울 - - - [제주] =str1 넣고싶은제목
+            =str title = '[str1]' + str2 타이틀 [제주], 태그
+            힐링0 항공권1 2 3 4 ... [제주] 흑돼지 먹방 힐링
+            str1 tag0 제주 힐링 ㅁ [<- ㅁ ㅁ ㅁ ㅁ ->] 'ㅁ
+            [제주] 흑돼지 먹방 설명' -->
 
             <template v-else>
               {{ product[column.field] }}
             </template>
           </div>
-
+          <div>
+            상품의 태그(키워드) : {{ product.tags[0] }}
+          </div>
           <img :src="product.thumbnail" alt="대체 이미지" />
           <button
             @click="

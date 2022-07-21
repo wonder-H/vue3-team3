@@ -3,9 +3,9 @@
   <div class="footer">
     <div class="wrapper">
       <div class="three">
-        <div>1111111</div>
-        <div>22222222</div>
-        <div>333333</div>
+        <div>로그인</div>
+        <div>공지사항</div>
+        <div>고객센터</div>
       </div>
       <div class="skyblue">
         <div class="logo">FASTOUR</div>

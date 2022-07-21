@@ -70,7 +70,7 @@ export default {
 
     this.filteredResults =
       this.teamStore.searchResults.filter(
-        (item) => item.tags[0] === "제주도",
+        (item) => item.tags[0] === "힐링",
       );
   },
 };

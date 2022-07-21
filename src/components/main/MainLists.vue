@@ -10,9 +10,12 @@
       해당 아이디 구매페이지로 이동
     </button>
   </div> -->
-
-  <div class="wrapper">
-    <h2>제주 7 힐링</h2>
+  <!-- v-for="item in this.teamStore.searchResults" -->
+  <div
+    class="wrapper"
+    v-for="item in this.teamStore.products"
+  >
+    <h2>{{ item.title }}</h2>
     <ul class="main-lists">
       <li>
         <div class="main-lists__img"></div>
@@ -28,14 +31,21 @@ import MainListSlider from "../MainListSlider.vue";
 import { mapStores } from "pinia";
 import { useTeamStore } from "../../store/store";
 export default {
+  data() {
+    return {
+      // allResults: null,
+    };
+  },
   computed: {
     ...mapStores(useTeamStore),
   },
   components: {
     MainListSlider,
   },
-  created() {
-    // this.teamStore.searchProducts();
+  async created() {
+    this.allResults = await this.teamStore.allProducts();
+    // this.allResults = this.teamStore.allProducts();
+    console.log(this.teamStore.products);
   },
 };
 </script>

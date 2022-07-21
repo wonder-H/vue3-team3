@@ -1,11 +1,8 @@
 <template>
   <div>유저 계좌 추가하기</div>
-  <div style="display: flex">
-    <label
-      :id="bank.code"
-      class="bank"
-      v-for="bank in teamStore.banks"
-    >
+
+  <div class="container">
+    <div v-for="bank in teamStore.banks">
       <input
         :id="bank.code"
         type="radio"
@@ -13,22 +10,19 @@
         v-model="bankCode"
       />
 
-      {{ bank.name }} <br />
-      은행코드: {{ bank.code }} <br />
-      계좌번호예시:{{ bank.digits }}<br />
-      계좌보유여부:
-      {{ bank.disabled ? "보유" : "미보유" }}
-    </label>
-
-    <!-- <li
-      
-      
-      :value="bank.code"
-      @click="bankCodeSelect"
-    > -->
-
-    <!-- v-bind:class="{ on: true }" -->
+      <label
+        :for="bank.code"
+        :class="bankCode === bank.code ? 'selected' : null"
+      >
+        {{ bank.name }} <br />
+        은행코드: {{ bank.code }} <br />
+        계좌번호예시:{{ bank.digits }}<br />
+        계좌보유여부:
+        {{ bank.disabled ? "보유" : "미보유" }}
+      </label>
+    </div>
   </div>
+  <hr />
   <div>선택된 은행 코드: {{ bankCode }}</div>
   <input v-model="accountNumber" placeholder="계좌번호" />
 
@@ -87,16 +81,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.bank {
-  padding: 10px;
-  border: 2px solid blue;
-
-  &:active {
-    border: 2px solid red;
+.container {
+  display: flex;
+  input {
+    display: none;
   }
+  label {
+    border: 2px solid black;
 
-  /* &.on {
-    color: yellow;
-  } */
+    &.selected {
+      border: 2px solid red;
+    }
+  }
 }
 </style>

@@ -39,7 +39,7 @@
     <button
       @click="
         teamStore.addProduct(
-          title,
+          `[${teamStore.selectedRegion}]` + title,
           Number(price),
           description,
           [tags],
@@ -50,6 +50,7 @@
     >
       제품 추가
     </button>
+    <div>{{ `[${teamStore.selectedRegion}]` + title }}</div>
   </div>
 </template>
 

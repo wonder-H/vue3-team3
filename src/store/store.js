@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const useTeamStore = defineStore("team", {
   state: () => ({
+    selectedRegion: "서울",
     isLoggedin: false,
     searchResults: [],
     userAllTransactions: [],
