@@ -7,6 +7,7 @@ export const useTeamStore = defineStore("team", {
     isLoggedin: false,
     searchResults: [],
     userAllTransactions: [],
+    userTransaction: {},
     adminAllTransactions: [],
     token: localStorage.getItem("token"),
     displayName: "아직 로그인 안됨",
@@ -328,7 +329,7 @@ export const useTeamStore = defineStore("team", {
         },
       });
 
-      console.log(res.data);
+      console.log("검색된 결과", res.data);
 
       this.searchResults = res.data;
     },
@@ -398,6 +399,7 @@ export const useTeamStore = defineStore("team", {
       });
 
       console.log(res.data);
+      this.userTransaction = res.data;
     },
 
     /////////////////////////////////// 계좌 /////////////////////////////////

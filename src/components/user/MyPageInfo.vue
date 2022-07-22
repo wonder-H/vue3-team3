@@ -11,7 +11,9 @@
     <img src="" alt="img" />
     image.png
   </div>
-  <button>회원정보 수정</button>
+  <button @click="$router.push('/updateinfo')">
+    회원정보 수정
+  </button>
 </template>
 
 <script>

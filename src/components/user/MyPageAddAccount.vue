@@ -1,4 +1,16 @@
 <template>
+  <router-link to="/addaccount"
+    >사용자 계좌 추가</router-link
+  >
+  |
+  <router-link to="/showaccounts"
+    >사용자 계좌 조회</router-link
+  >
+  |
+  <router-link to="/updateinfo"
+    >사용자 정보 수정</router-link
+  >
+  |
   <div>유저 계좌 추가하기</div>
 
   <div class="container">

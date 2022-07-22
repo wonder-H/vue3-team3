@@ -6,22 +6,39 @@
       @click="
         $router.push(`/productdetail/${searchResult.id}`)
       "
-    >
+    > 
       해당 아이디 구매페이지로 이동
     </button>
   </div> -->
   <!-- v-for="item in this.teamStore.searchResults" -->
-  <div
-    class="wrapper"
-    v-for="item in this.teamStore.products"
-  >
-    <h2>{{ item.title }}</h2>
+  <div class="wrapper">
+    <!-- <h2>{{ item.title.split("").shift() }}</h2> -->
+    <h2>{{ teamStore.selectedRegion }} & 힐링</h2>
     <ul class="main-lists">
       <li>
         <div class="main-lists__img"></div>
       </li>
       <li>
-        <MainListSlider />
+        <MainListSlider
+          :selectedRegion="this.teamStore.selectedRegion"
+          propTags="힐링"
+        />
+      </li>
+    </ul>
+  </div>
+
+  <div class="wrapper">
+    <!-- <h2>{{ item.title.split("").shift() }}</h2> -->
+    <h2>{{ teamStore.selectedRegion }} & 맛집</h2>
+    <ul class="main-lists">
+      <li>
+        <div class="main-lists__img"></div>
+      </li>
+      <li>
+        <MainListSlider
+          :selectedRegion="this.teamStore.selectedRegion"
+          propTags="맛집"
+        />
       </li>
     </ul>
   </div>
@@ -31,21 +48,23 @@ import MainListSlider from "../MainListSlider.vue";
 import { mapStores } from "pinia";
 import { useTeamStore } from "../../store/store";
 export default {
-  data() {
-    return {
-      // allResults: null,
-    };
-  },
   computed: {
     ...mapStores(useTeamStore),
   },
   components: {
     MainListSlider,
   },
+  watch: {
+    ["teamStore.selectedRegion"]: async function () {
+      this.teamStore.searchProducts(
+        this.teamStore.selectedRegion,
+      );
+    },
+  },
   async created() {
-    this.allResults = await this.teamStore.allProducts();
-    // this.allResults = this.teamStore.allProducts();
-    console.log(this.teamStore.products);
+    await this.teamStore.searchProducts(
+      this.teamStore.selectedRegion,
+    );
   },
 };
 </script>

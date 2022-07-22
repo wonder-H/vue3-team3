@@ -5,30 +5,27 @@
     <div>연결된 계좌 목록</div>
   </div>
   <form>
-    <input ref="nickName" :value="teamStore.displayName" />
-    <button>수정</button>
-  </form>
-  <form>
+    <input ref="nickName" :value="nickName" />
     <input
       ref="password1"
       placeholder="기존 비밀번호"
       value=""
     />
-  </form>
-  <form>
     <input
       ref="password2"
       placeholder="새로운 비밀번호"
       value=""
     />
   </form>
-  <div>
-    <img alt="img" />
-    image.png
-    <button>파일선택</button>
-  </div>
+
   <button
-    @click="teamStore.updateInfo(this.$refs.nickName.value)"
+    @click="
+      teamStore.updateInfo(
+        this.$refs.nickName.value,
+        this.$refs.password1.value,
+        this.$refs.password2.value,
+      )
+    "
   >
     수정완료
   </button>
@@ -38,8 +35,17 @@
 import { mapStores } from "pinia";
 import { useTeamStore } from "../../store/store";
 export default {
+  data() {
+    return {
+      nickName: "",
+    };
+  },
   computed: {
     ...mapStores(useTeamStore),
+  },
+
+  created() {
+    this.nickName = localStorage.getItem("nickName");
   },
 };
 </script>

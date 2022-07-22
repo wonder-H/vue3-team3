@@ -5,9 +5,10 @@
       <div class="logo">FASTOUR</div>
       <NavBtnList />
       <div class="gnb-right">
-        <ul class="log-in" v-if="teamStore.isLoggedin">
-          <li>공지사항</li>
-          <li>이용안내</li>
+        <div>공지사항</div>
+        <div>이용안내</div>
+
+        <ul class="logged-in" v-if="teamStore.isLoggedin">
           <li class="my-page">
             <svg
               width="34"
@@ -21,15 +22,20 @@
                 fill="#555555"
               />
             </svg>
+
             <ul>
               <li>
-                <button @click="teamStore.logout()">
-                  로그아웃
+                <button @click="$router.push(`/mypage`)">
+                  마이 페이지
                 </button>
               </li>
               <li>
-                <button @click="teamStore.logout()">
-                  로그아웃
+                <button
+                  @click="
+                    $router.push(`/useralltransactions`)
+                  "
+                >
+                  구매 내역
                 </button>
               </li>
               <li>
@@ -40,7 +46,7 @@
             </ul>
           </li>
         </ul>
-        <ul class="log-out" v-if="!teamStore.isLoggedin">
+        <ul class="logged-out" v-else>
           <li>
             <button @click="$router.push(`/login`)">
               로그인
@@ -95,7 +101,7 @@ header {
         margin-right: 12px;
       }
     }
-    ul.log-in {
+    ul.logged-in {
       li.my-page {
         position: relative;
         ul {
@@ -118,7 +124,7 @@ header {
         }
       }
     }
-    ul.log-out {
+    ul.logged-out {
       li {
         width: 76px;
         height: 28px;

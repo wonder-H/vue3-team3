@@ -57,12 +57,12 @@
               $router.push(`/allproducts/${product.id}`)
             "
           >
-            상품 {{ product.id }} 수정하기
+            수정하기
           </button>
           <button
             @click="teamStore.deleteProduct(product.id)"
           >
-            상품 {{ product.id }} 삭제하기
+            삭제하기
           </button>
         </div>
       </div>

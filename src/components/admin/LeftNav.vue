@@ -3,18 +3,49 @@
     <div>FASTOUR</div>
     <hr />
     <div class="menu">
-      <div>모든 제품 조회</div>
-      <div>제품 추가</div>
-      <div>전체 거래 내역</div>
+      <router-link to="/admin/allproducts"
+        >모든 제품 조회</router-link
+      >
+      |
+      <router-link to="/admin/addproduct"
+        >제품 추가</router-link
+      >
+      |
+      <router-link to="/admin/alltransactions"
+        >전체 거래 내역</router-link
+      >
+      |
+      <!-- <button @click="$router.push('/allproducts')">
+        모든 제품 조회
+      </button>
+      <hr />
+      <button @click="$router.push()">제품 추가</button>
+      <hr />
+      <button @click="$router.push()">
+        전체 거래 내역
+      </button> -->
       <div>
         <hr />
-        <span>로그아웃 </span><span>홈 </span>
+        <button @click="$router.push('/')">홈</button>
+        |
+        <button
+          @click="$router.push('/'), teamStore.logout()"
+        >
+          로그아웃
+        </button>
+        |
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+import { mapStores } from "pinia";
+import { useTeamStore } from "../../store/store";
+export default {
+  computed: {
+    ...mapStores(useTeamStore),
+  },
+};
 </script>
 <style lang="scss">
 .left-nav {

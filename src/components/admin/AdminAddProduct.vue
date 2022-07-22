@@ -71,6 +71,7 @@ export default {
       photoBase64: "",
     };
   },
+
   methods: {
     loadImage(e) {
       const files = e.target.files;

@@ -1,6 +1,17 @@
 <template>
-  <TheHeader />
-  <div>마이페이지 계좌 조회하기</div>
+  <router-link to="/addaccount"
+    >사용자 계좌 추가</router-link
+  >
+  |
+  <router-link to="/showaccounts"
+    >사용자 계좌 조회</router-link
+  >
+  |
+  <router-link to="/updateinfo"
+    >사용자 정보 수정</router-link
+  >
+  |
+  <div>사용자 계좌 조회 페이지</div>
 
   <div v-for="accountInfo in teamStore.accounts.accounts">
     <div>은행명: {{ accountInfo.bankName }}</div>

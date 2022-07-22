@@ -8,7 +8,7 @@
       <button
         @click="
           $router.push(
-            `/adminalltransactions/${transaction.detailId}`,
+            `/admin/alltransactions/${transaction.detailId}`,
           )
         "
       >

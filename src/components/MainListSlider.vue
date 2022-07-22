@@ -51,6 +51,23 @@ export default {
       filteredResults: null,
     };
   },
+  watch: {
+    ["teamStore.searchResults"]: async function () {
+      console.log(
+        "슬라이더의 선택된 지역",
+        this.teamStore.selectedRegion,
+      );
+      this.filteredResults =
+        this.teamStore.searchResults.filter(
+          (item) => item.tags[0] === this.propTags,
+        );
+    },
+  },
+  props: {
+    propTags: {
+      type: String,
+    },
+  },
   computed: {
     ...mapStores(useTeamStore),
   },
@@ -63,18 +80,22 @@ export default {
       modules: [Navigation, Pagination, Keyboard],
     };
   },
-  async mounted() {
+  async created() {
     // console.log(this.teamStore.searchResults);
 
-    await this.teamStore.searchProducts();
+    this.filteredResults = await this.teamStore
+      .searchResults;
 
     this.filteredResults =
       this.teamStore.searchResults.filter(
-        (item) => item.tags[0] === "힐링",
+        (item) => item.tags[0] === this.propTags,
       );
+
+    console.log("필터된 결과", this.filteredResults);
   },
 };
 </script>
+
 <style lang="scss">
 .main-list-swiper:hover .swiper-button-prev,
 .main-list-swiper:hover .swiper-button-next {

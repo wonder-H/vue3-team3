@@ -1,14 +1,7 @@
 <template>
   <div class="flex-container">
     <LeftNav class="left" />
-    <!-- <AdminAllProducts
-      :products="teamStore.products"
-      :columns="teamStore.columns"
-    /> -->
-
-    <AdminAllTransactions />
-    <AdminAddProduct />
-    <AdminEditProduct />
+    <router-view />
   </div>
 </template>
 

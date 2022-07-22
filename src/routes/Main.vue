@@ -1,7 +1,21 @@
-<template>
-  <div>Here is 메인</div>
+<template lang="">
+  <!-- <div>this is /user</div> -->
+  <TheHeader />
+  <TheSection />
+  <TheFooter />
 </template>
-
 <script>
-export default {};
+import TheHeader from "../components/TheHeader.vue";
+import TheSection from "../components/TheSection.vue";
+import TheFooter from "../components/TheFooter.vue";
+
+export default {
+  components: {
+    TheHeader,
+    TheSection,
+    TheFooter,
+  },
+};
 </script>
+
+<style lang=""></style>

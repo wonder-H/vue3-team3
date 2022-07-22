@@ -8,8 +8,7 @@
   />
   <button
     @click="
-      teamStore.login(email, password),
-        $router.push('/user')
+      teamStore.login(email, password), $router.push('/')
     "
   >
     로그인

@@ -1,6 +1,23 @@
 <template>
-  <div>사용자 모든 거래 내역</div>
-  <div>{{ teamStore.userAllTransactions }}</div>
+  <div class="right">
+    <div>모든 거래내역 조회</div>
+    <div
+      v-for="transaction in teamStore.userAllTransactions"
+    >
+      {{ transaction }}
+      <button
+        @click="
+          $router.push(
+            `/useralltransactions/${transaction.detailId}`,
+          )
+        "
+      >
+        상세내역으로 push
+      </button>
+      <hr />
+    </div>
+    <hr />
+  </div>
 </template>
 <script>
 import { mapStores } from "pinia";
